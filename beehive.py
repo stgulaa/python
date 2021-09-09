@@ -8,17 +8,28 @@
 #입력으로 주어진 방까지 최소 개수의 방을 지나서 갈 때 몇 개의 방을 지나는지 출력한다.
 
 #처음 코드
-n = int(input())
+# n = int(input())
 
-if(n/6<=4):
-	if(n/6<3):
-		if(n/6<=1):
-			if(n/6<1):
-				print(1)
-			print(2)
-		print(3)
-	print(4)
+# if(n/6<=4):
+# 	if(n/6<3):
+# 		if(n/6<=1):
+# 			if(n/6<1):
+# 				print(1)
+# 			print(2)
+# 		print(3)
+# 	print(4)
 				
-else:
-	print(5)
+# else:
+# 	print(5)
 #문제) 13에서 값이 2번 출력됨
+
+#두번째 코드(정답)
+n = int(input())
+cnt = 1
+cnt_six = 6
+count = 1
+while n > cnt:
+    count += 1
+    cnt += cnt_six
+    cnt_six += 6
+print(count)
