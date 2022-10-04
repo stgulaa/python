@@ -8,15 +8,15 @@
 # 3개 주사위의 나온 눈이 주어질 때, 상금을 계산하는 프로그램을 작성 하시오.
 
 d1,d2,d3 = map(int, input().split())
-if(d1==d2):
-    if(d2==d3): #3번의 눈이 전부 같을 때
-        price= 10000+(d1*1000)
-    elif(d2!=d3):#d1과 d2가 같을 때
-        price = 1000+(d1*100)
-elif(d1==d3 & d1!=d2): #d1과 d3가 같을 때 안됨
-    price = 1000+(d3*100)
-elif(d2==d3 & d1!=d3): #d2와 d3가 같을 때
-    price = 1000 + (d2 * 100)
+price = 0
+if(d1==d2==d3):
+    price = 10000 + (d1*1000)
+elif(d1==d2):
+    price = 1000 + (d1*100)
+elif(d2==d3):
+    price = 1000+(d2*100)
+elif(d1==d3):
+    price = 1000+(d1*100)
 else:
     price = max(d1,d2,d3)*100
 print(price)
