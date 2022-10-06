@@ -8,3 +8,18 @@
 
 # 출력
 # 첫째 줄에, 42로 나누었을 때, 서로 다른 나머지가 몇 개 있는지 출력한다.
+
+num_list =[]
+#cnt = 1
+for i in range(0,10):
+    a = int(input())
+    num_list.append(a%42)
+num_list=set(num_list)
+print(len(num_list))
+
+# for i in range(len(num_list)):
+#     for j in range(len(num_list)):
+#         if(int(num_list[i]!=int(num_list[j]))):
+#             print(num_list[i], num_list[j], cnt)
+#             cnt+=1
+# print(cnt)
