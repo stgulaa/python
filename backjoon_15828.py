@@ -13,17 +13,23 @@
 
 # 출력
 # 라우터에 남아있는 패킷을 앞에서부터 순서대로 공백으로 구분해서 출력하면 된다. 만약 비어있을 경우 empty라고 출력한다.
-
 from collections import deque
+import sys
 
-n = int(input()) #버퍼의 크기
-q = deque([])
+n = int(sys.stdin.readline())
+q = deque()
 
-for i in range(n):
-    rotateNum = int(input())
-    q.append(rotateNum)
-    if not q: # 버퍼가 비어있을 때 0이 들어오면 안됨
-        if(rotateNum ==0):
-            q.remove(0)
-    elif(rotateNum == -1):
+while True:
+    num = int(sys.stdin.readline())
+    if num == 0: #맨 처음의 값을 빼야 함
+        q.popleft()
+    elif num == -1:
         break
+    elif(num!=0 and len(q)<n):
+        q.append(num)
+
+for i in q:
+    print(i, end=" ")
+
+if len(q) == 0:
+    print("empty")
