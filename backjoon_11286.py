@@ -17,7 +17,7 @@ from queue import PriorityQueue
 import sys
 
 q = PriorityQueue()
-q_abs = PriorityQueue() #절댓값을 담는 큐
+q_abs = PriorityQueue() # 절댓값을 담는 큐
 n = int(input())
 
 for i in range(n):
@@ -25,17 +25,17 @@ for i in range(n):
     if(x != 0):
         q.put(x)
         q_abs.put(abs(x))
-    else:
-        #입력이 0일 경우 절대값이 작은 것 출력
-        for i in range(q_abs.qsize()):
-            min = q_abs.get()
-            print("절대값 중 가장 작은 값 : ",min)
-            for i in range(q.qsize()):
-                if (-min == q.get()):
-                    print("만약 절대값과 같은 수가 있을 경우 최솟값: ", -min)
-                    min = -(min)
-        print(min)
 
+    else: #입력이 0일 경우 절대값이 작은 것 출력
+        if(q_abs.empty()): #큐가 빈 경우
+            print("0")
+        else:
+            min = q_abs.get()
+            for i in range(q.qsize()): #원 값을 담은 큐를 순회하면서 min과 같은 -값이 있는지 확인
+                if (-min == q.get()):
+                    min = -min
+                    break
+            print(min)
 
 
 
