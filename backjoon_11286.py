@@ -13,6 +13,8 @@ import getpass
 # 출력
 # 입력에서 0이 주어진 회수만큼 답을 출력한다. 만약 배열이 비어 있는 경우인데 절댓값이 가장 작은 값을 출력하라고 한 경우에는 0을 출력하면 된다.
 
+
+#시간초과
 from queue import PriorityQueue
 import sys
 
@@ -32,15 +34,13 @@ for i in range(n):
         else:
             min = q_abs.get() #절대값이 가장 작은 값 min에 저장
             for i in range(q.qsize()): #원 값을 담은 큐를 순회하면서 min과 같은 -값이 있는지 확인
-                turn = q.get() #q의 최솟값 저장
-                if (turn == -min): #만약 -절댓값이 turn과 같다면 min 값 변경
-                    min = turn
-                    break
+                turn = q.get()
+                if min == abs(turn): #min과 절댓값이 같은지 확인
+                    if (turn == -min): #만약 -절댓값이 turn과 같다면 min 값 변경
+                        min = turn
+                        break
+                    else:
+                        q.put(turn) #아닐 경우 q의 삭제된 값 다시 넣기
                 else:
-                    q.put(turn) #아닐 경우 q의 삭제된 값 다시 넣기
-
+                    q.put(turn)
             print(min)
-
-
-
-# 동일한 - 값이 들어오면 양수로 출력함 ex. -1 -1 -> 1, 1
