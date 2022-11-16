@@ -1,6 +1,6 @@
 # 문제
 # 절댓값 힙은 다음과 같은 연산을 지원하는 자료구조이다.
-
+import getpass
 # 배열에 정수 x (x ≠ 0)를 넣는다.
 # 배열에서 절댓값이 가장 작은 값을 출력하고, 그 값을 배열에서 제거한다. 절댓값이 가장 작은 값이 여러개일 때는, 가장 작은 수를 출력하고, 그 값을 배열에서 제거한다.
 # 프로그램은 처음에 비어있는 배열에서 시작하게 된다.
@@ -30,13 +30,17 @@ for i in range(n):
         if(q_abs.empty()): #큐가 빈 경우
             print("0")
         else:
-            min = q_abs.get()
+            min = q_abs.get() #절대값이 가장 작은 값 min에 저장
             for i in range(q.qsize()): #원 값을 담은 큐를 순회하면서 min과 같은 -값이 있는지 확인
-                if (-min == q.get()):
-                    min = -min
+                turn = q.get() #q의 최솟값 저장
+                if (turn == -min): #만약 -절댓값이 turn과 같다면 min 값 변경
+                    min = turn
                     break
+                else:
+                    q.put(turn) #아닐 경우 q의 삭제된 값 다시 넣기
+
             print(min)
 
 
 
-
+# 동일한 - 값이 들어오면 양수로 출력함 ex. -1 -1 -> 1, 1
