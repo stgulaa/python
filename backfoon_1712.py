@@ -16,15 +16,20 @@ import sys
 
 a,b,c =map(int, sys.stdin.readline().split())
 # a : 고정비용, b : 가변비용 , c: 책정된 노트북 가격
-cnt = 1
+# cnt = 1
+# if(b>=c):
+#     print("-1")
+# else:
+#     while True:
+#         cost = a+ b*cnt
+#         profit = c*cnt
+#         braken_even = profit-cost
+#         if(braken_even>=0):
+#             print(cnt+1)
+#             break
+#         cnt+=1
+
 if(b>=c):
-    print("-1")
+    print(-1)
 else:
-    while True:
-        cost = a+ b*cnt
-        profit = c*cnt
-        braken_even = profit-cost
-        if(braken_even>=0):
-            print(cnt+1)
-            break
-        cnt+=1
+    print(a/(c-b)+1)
