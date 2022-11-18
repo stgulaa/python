@@ -16,19 +16,15 @@ import sys
 
 a,b,c =map(int, sys.stdin.readline().split())
 # a : 고정비용, b : 가변비용 , c: 책정된 노트북 가격
-
-def findBreakevenPoint(a,b,c):
-    basic_price = a+b #기본적으로 생산할 때 들어가는 비용
-    cnt = 1 #손익분기점이 생기기 위한 최소 생산량
+cnt = 1
+if(b>=c):
+    print("-1")
+else:
     while True:
-        profit = c*cnt #이익
-        net_profit = basic_price*cnt - profit #순이익
-        if(net_profit > profit):
-            return cnt
-        elif(net_profit<= profit):
-            cnt +=1
-        else:
-            return -1
-
-
-print(findBreakevenPoint(a,b,c))
+        cost = a+ b*cnt
+        profit = c*cnt
+        braken_even = profit-cost
+        if(braken_even>=0):
+            print(cnt+1)
+            break
+        cnt+=1
